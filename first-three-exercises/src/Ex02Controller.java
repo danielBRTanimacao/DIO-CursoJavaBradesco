@@ -8,7 +8,6 @@ public class Ex02Controller {
         // showTableIMC(myIMC);
         // numbersList(1, 10, "par");
         // numbersList(1, 10, "impar");
-        // FALTA SO MAIS 1 AQUI
     }
 
     public static void multiTable(int num) {
