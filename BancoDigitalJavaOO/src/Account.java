@@ -12,9 +12,11 @@ public abstract class Account implements InterfaceAccount {
     // utilizando protect para ter a interação com a classe filho
     protected int agent;
     protected int num;
-    private double amount;
+    protected double amount;
+    protected   Client client;
 
-    public Account() {
+    public Account(Client client) {
+        this.client = client;
         this.agent =  Account.PATTERN_AGENT;
         this.num = SEQUENCIAL++;
     }
@@ -36,6 +38,7 @@ public abstract class Account implements InterfaceAccount {
     }
 
     protected void commonInfos() {
+        System.out.println("Usuario " + this.client.getName());
         System.out.println("Agente " + this.agent);
         System.out.println("Número da conta " + this.num);
         System.out.println("Saldo " + String.format("%.2f", this.amount));

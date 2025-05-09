@@ -1,9 +1,13 @@
 public class App {
     public static void main(String[] args) {
-        Account ca = new CurrencyAccount();
-        Account da = new DepositAccount();
+        Client cleitin = new Client("Cleitin do grau");
+        Client cabaQueMoraLogoAli = new Client("Caba que mora logo ali");
 
-        Account da2 = new DepositAccount();
+        Account ca = new CurrencyAccount(cleitin);
+        Account da = new DepositAccount(cleitin);
+
+        Account da2 = new DepositAccount(cabaQueMoraLogoAli);
+        da2.printExtract();
 
         ca.printExtract();
         da.printExtract();
