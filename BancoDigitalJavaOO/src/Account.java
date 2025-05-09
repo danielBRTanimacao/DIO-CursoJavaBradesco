@@ -32,7 +32,7 @@ public abstract class Account implements InterfaceAccount {
     @Override
     public void transfer(double value, Account accountDestiny) {
         this.withdrawn(value);
-        this.deposit(value);
+        accountDestiny.deposit(value);
     }
 
     protected void commonInfos() {
