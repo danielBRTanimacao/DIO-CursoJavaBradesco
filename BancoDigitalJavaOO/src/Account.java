@@ -5,20 +5,22 @@ import java.util.Random;
 
 public abstract class Account implements InterfaceAccount {
     static Random random = new Random();
-    private static int PATTERN_AGENT = random.nextInt(100);
+    private static final int PATTERN_AGENT = random.nextInt(100);
     // Para ser controlado pela classe
-    private static int SEQUENCIAL = 1;
+    private static int SEQUENTIAL = 1;
 
     // utilizando protect para ter a interação com a classe filho
     protected int agent;
     protected int num;
     protected double amount;
-    protected   Client client;
+    protected  Client client;
+    protected  Bank bank;
 
-    public Account(Client client) {
+    public Account(Client client, Bank bank) {
+        this.bank = bank;
         this.client = client;
         this.agent =  Account.PATTERN_AGENT;
-        this.num = SEQUENCIAL++;
+        this.num = SEQUENTIAL++;
     }
 
     @Override
@@ -38,6 +40,7 @@ public abstract class Account implements InterfaceAccount {
     }
 
     protected void commonInfos() {
+        System.out.println("Banco " + this.bank.getName());
         System.out.println("Usuario " + this.client.getName());
         System.out.println("Agente " + this.agent);
         System.out.println("Número da conta " + this.num);

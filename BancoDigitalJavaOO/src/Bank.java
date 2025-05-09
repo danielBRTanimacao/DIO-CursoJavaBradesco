@@ -1,19 +1,13 @@
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class Bank {
     String name;
     List<Client> clients;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Bank(String name) {
         this.name = name;
     }
-
-    public List<Client> getClients() {
-        return clients;
-    }
-
 }

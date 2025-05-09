@@ -1,3 +1,6 @@
+import lombok.Data;
+
+@Data
 public class Client {
     public String name;
 
@@ -5,11 +8,4 @@ public class Client {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

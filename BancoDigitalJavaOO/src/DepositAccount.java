@@ -1,7 +1,7 @@
 public class DepositAccount extends Account{
 
-    public DepositAccount(Client client) {
-        super(client);
+    public DepositAccount(Client client, Bank bank) {
+        super(client, bank);
     }
 
     @Override

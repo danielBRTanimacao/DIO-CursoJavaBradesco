@@ -1,7 +1,8 @@
 public class CurrencyAccount extends Account {
 
-    public CurrencyAccount(Client client) {
-        super(client);
+    public CurrencyAccount(Client client, Bank bank) {
+        super(client, bank);
+
     }
 
     @Override
