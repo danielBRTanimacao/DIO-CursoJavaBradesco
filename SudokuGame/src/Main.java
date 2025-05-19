@@ -1,8 +1,14 @@
 import model.Board;
+import model.Space;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.Objects.nonNull;
 
 public class Main {
     private final static Scanner scanner = new Scanner(System.in);
@@ -30,8 +36,56 @@ public class Main {
             option = scanner.nextInt();
 
             switch (option) {
-                case 1 ->
+                case 1 -> startGame(positions);
+                case 2 -> inputNumber();
+                case 3 -> removeNumber();
+                case 4 -> showCurrentGame();
+                case 5 -> showGameStatus();
+                case 6 -> clearGame();
+                case 7 -> finishGame();
+                case 8 -> System.exit(0);
+                default -> System.out.println("Opção invalida, escolha uma do menu!");
             }
         }
+    }
+
+    private static void startGame(Map<String, String> positions) {
+        if (nonNull(board)) {
+            System.out.println("O jogo ja foi iniciado!");
+            return;
+        }
+
+        List<List<Space>> spaces = new ArrayList<>();
+        for (int i = 0; i < BOARD_LIMIT; i++) {
+            spaces.add(new ArrayList<>());
+            for (int j = 0; j < BOARD_LIMIT; j++) {
+                var position = positions.get("%s, %s".formatted(i, j));
+                var expected = Integer.parseInt(position.split(",")[0]);
+                var fixed = Boolean.parseBoolean(position.split(",")[1]);
+                var currentSpace = new Space(expected, fixed);
+                spaces.get(i).add(currentSpace);
+            }
+        }
+
+        board = new Board(spaces);
+        System.out.println("O jogo esta pronto para começar!");
+    }
+
+    private static void inputNumber() {
+    }
+
+    private static void removeNumber() {
+    }
+
+    private static void showCurrentGame() {
+    }
+
+    private static void showGameStatus() {
+    }
+
+    private static void clearGame() {
+    }
+
+    private static void finishGame() {
     }
 }
