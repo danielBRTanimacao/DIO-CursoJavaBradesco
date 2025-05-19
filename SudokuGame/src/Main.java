@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 public class Main {
@@ -72,9 +73,34 @@ public class Main {
     }
 
     private static void inputNumber() {
+        if (isNull(board)) {
+            System.out.println("O jogo ainda não foi iniciado!");
+            return;
+        }
+        System.out.println("Informe a COLUNA que deseja inserir o número: ");
+        var col = runUntilGetValidNumber(0, 8);
+        System.out.println("Informe a LINHA que deseja inserir o número: ");
+        var row = runUntilGetValidNumber(0, 8);
+        System.out.println("Informe o valor que vai entrar na posição " + col + "e" + row);
+        var value = runUntilGetValidNumber(1, 9);
+        if (!board.changeValue(col, row, value)) {
+            System.out.printf("A posição [%s,%s] tem um valor fixo!\n", col, row);
+        }
     }
 
     private static void removeNumber() {
+        if (isNull(board)) {
+            System.out.println("O jogo ainda não foi iniciado!");
+            return;
+        }
+        System.out.println("Informe a COLUNA que deseja inserir o número: ");
+        var col = runUntilGetValidNumber(0, 8);
+        System.out.println("Informe a LINHA que deseja inserir o número: ");
+        var row = runUntilGetValidNumber(0, 8);
+        System.out.println("Informe o valor que vai entrar na posição " + col + "e" + row);
+        if (!board.clearValue(col, row)) {
+            System.out.printf("A posição [%s,%s] tem um valor fixo!\n", col, row);
+        }
     }
 
     private static void showCurrentGame() {
@@ -87,5 +113,14 @@ public class Main {
     }
 
     private static void finishGame() {
+    }
+
+    private static int runUntilGetValidNumber(final int min, final int max) {
+        var current = scanner.nextInt();
+        while (current< min || current > max) {
+            System.out.println("Valor invalido! Informe um numero entre " + min + " e " + max);
+            current = scanner.nextInt();
+        }
+        return current;
     }
 }
