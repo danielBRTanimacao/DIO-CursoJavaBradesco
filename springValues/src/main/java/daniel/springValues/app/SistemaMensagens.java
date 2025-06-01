@@ -1,16 +1,26 @@
 package daniel.springValues.app;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
 public class SistemaMensagens implements CommandLineRunner {
-    private String name = "Cleitin do grau";
-    private String email = "cleitindograu@gmail.com";
-    private List<Long> phones = new ArrayList<>();
+
+    @Value("${name:Noreply}") // Ajuda a não deixar valores explicitos!
+    private String name;
+
+    @Value("${email:cleitindograu@gmail.com}")
+    private String email;
+    private List<Long> phones = new ArrayList<>(
+            Arrays.asList(
+                    new Long[]{12345678910L}
+            )
+    );
 
     @Override
     public void run(String... args) throws Exception {
